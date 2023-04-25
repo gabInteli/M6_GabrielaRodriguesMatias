@@ -234,7 +234,6 @@ stereo-msgs==4.2.3
 sympy==1.9
 systemd-python==234
 teleop-twist-keyboard==2.3.2
-terminator==2.1.1
 tf2-geometry-msgs==0.25.2
 tf2-kdl==0.25.2
 tf2-msgs==0.25.2
