@@ -1,8 +1,8 @@
-#!/usr/bin/env python3
 import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
 import time
+import math
 
 class TurtleController(Node):
     def __init__(self):
@@ -12,43 +12,34 @@ class TurtleController(Node):
         self.twist_msg_ = Twist()
 
     def move_turtle(self):
+                # move a tartaruga para a posição inicial da estrela
         self.twist_msg_.linear.x = 2.0
         self.twist_msg_.angular.z = 0.0
         self.publisher_.publish(self.twist_msg_)
         time.sleep(2.0)
 
+        # desenha a primeira ponta da estrela
+        self.twist_msg_.linear.x = 1.0
+        self.twist_msg_.angular.z = math.radians(144)
+        self.publisher_.publish(self.twist_msg_)
+        time.sleep(2.0)
 
+        # desenha as próximas pontas da estrela
+        for i in range(4):
+            self.twist_msg_.linear.x = 1.0
+            self.twist_msg_.angular.z = math.radians(72)
+            self.publisher_.publish(self.twist_msg_)
+            time.sleep(2.0)
+
+            self.twist_msg_.linear.x = 1.0
+            self.twist_msg_.angular.z = math.radians(144)
+            self.publisher_.publish(self.twist_msg_)
+            time.sleep(2.0)
+
+        # para a tartaruga
         self.twist_msg_.linear.x = 0.0
-        self.twist_msg_.angular.z = 1.57
-        self.publisher_.publish(self.twist_msg_)
-        time.sleep(2.0)
-            
-        self.twist_msg_.linear.x = 2.0
         self.twist_msg_.angular.z = 0.0
         self.publisher_.publish(self.twist_msg_)
-        time.sleep(3.0)
-
-        self.twist_msg_.linear.x = 0.0
-        self.twist_msg_.angular.z = 1.57
-        self.publisher_.publish(self.twist_msg_)
-        time.sleep(1.0)
-
-        self.twist_msg_.linear.x = 2.0
-        self.twist_msg_.angular.z = 0.0
-        self.publisher_.publish(self.twist_msg_)
-        time.sleep(2.0)
-
-        self.twist_msg_.linear.x = 0.0
-        self.twist_msg_.angular.z = 1.57
-        self.publisher_.publish(self.twist_msg_)
-        time.sleep(1.0)
-
-        self.twist_msg_.linear.x = 2.0
-        self.twist_msg_.angular.z = 0.0
-        self.publisher_.publish(self.twist_msg_)
-        time.sleep(2.0)
-        
-        self.timer_.cancel()
 
 def main(args=None):
     rclpy.init()
