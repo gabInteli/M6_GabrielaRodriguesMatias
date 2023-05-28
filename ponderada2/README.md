@@ -1,22 +1,45 @@
-<img src="../assets/logo-inteli.png" alt="Logo do Inteli"/>
+# Documentação do Projeto Turtlebot
+Este é um projeto que utiliza o ROS 2 e o Gazebo para controlar o movimento de um robô Turtlebot3 em um ambiente simulado. O projeto consiste em classes e lógica para gerenciar a fila de pontos a serem seguidos pelo robô e controlar seu movimento.
 
-# Atividade 2: Simulação de robôs móveis com Gazebo
+## Funcionamento da Movimentação e Rotação
+No controle de movimento do robô no ROS2, é necessário utilizar mensagens de Twist para definir as velocidades lineares e angulares. No entanto, devido às restrições de movimento do robô, é preciso calcular o vetor relativo entre a posição atual e a posição desejada, o que é feito por meio da transformação de bases de coordenadas. Com a determinação da rotação e translação necessárias, é possível programar o robô para se mover para um ponto específico. Além disso, ao implementar uma lógica de filas, é possível criar rotas completas de forma eficiente e automatizada, permitindo que o robô navegue por ambientes complexos. 
 
-## Enunciado
+## Pré-requisitos
+Antes de começar, certifique-se de ter instalado os seguintes componentes:<br>
+✓ ROS 2<br>
+✓ Gazebo<br>
+✓ Turtlebot3 packages<br>
 
-Crie um pacote em ROS capaz de interagir com uma simulação feita no Gazebo de modo que a plataforma simulada do turtlebot3 seja capaz de mover-se de maneira controlada.
-- Interagir com os tópicos e/ou serviços do turtlebot3 de modo a conseguir mandar comandos de velocidade e extrair dados de odometria.
-- Conceber uma estrutura de dados capaz de armazenar a série de movimentos que devem ser feitos pelo robô para chegar no objetivo.
-- Implementar uma rota pré-estabelecida
 
-## Padrão de qualidade
+## Execução e Simulação
+### Passo 1: Inicialização do Gazebo
+Para iniciar o Gazebo com o mundo vazio e o Turtlebot3, execute o seguinte comando no terminal:<br>
 
-Para esta atividade, espera-se a capacidade demonstrável de interagir com um ambiente de simulação de robôs, gerando um movimento controlado na plataforma turtlebot3. A entrega deve ser um vídeo demonstrando o funcionamento do projeto, um texto conciso descrevendo como foi feita a implementação e o link para o repositório público no github onde foi feita a implementação. O enunciado da atividade encontra-se no link anexado ao card.
+`ros2 launch turtlebot3_gazebo empty_world.launch.py`<br>
 
-Padrão de qualidade:
+Isso iniciará o Gazebo com o Turtlebot3 em um mundo vazio.
 
-1. Setup adequado do ambiente de simulação; (peso 1)
-2. Interação adequada com os tópicos relacionados ao robô simulado; (peso 2)
-3. Demonstração de movimento controlado de acordo com uma rota pré-estabelecida; (peso 3)
-4. Explicação coerente e concisa da implementação (min 250 caracteres e máximo 1500); (peso 2)
-5. Congruência entre o que foi escrito e o código disposto no repositório do github; (peso 2)
+### Passo 2: Executando o Código Python
+Para executar o código Python que controla o movimento do Turtlebot3, siga estas etapas:
+- Abra um novo terminal.
+- Navegue até o diretório do projeto:<br> 
+`ponderada2/control`
+- Execute o seguinte comando:<br>
+`python3 turtlebot.py`<br>
+Aguarde até que o programa seja executado. 
+
+## Resultado
+Após seguir as etapas acima, o Turtlebot3 começará a se mover de acordo com a lógica implementada no código Python. 
+Você pode visualizar a movimentação do robô no ambiente simulado do Gazebo.
+
+### Objetivo de Rota 
+![Rota de Objetivo da Simulação - Forma uma letra G contendo apenas ângulos retos](./media/route.png)
+
+### Rota Realizada
+![Rota de Simulação no Gazebo - Sequência de pontos iluminados para formar uma letra G contendo apenas ângulos retos](./media/simulation_route.png)
+
+
+## Vídeo de Demonstração
+
+## Considerações Finais
+Este projeto demonstra a integração entre o ROS 2, o Gazebo e o Turtlebot3 para controlar o movimento de um robô em um ambiente simulado. Você pode personalizar a fila de pontos e a lógica de controle conforme necessário para atender aos requisitos do seu projeto.
