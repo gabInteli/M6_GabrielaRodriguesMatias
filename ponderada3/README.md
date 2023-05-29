@@ -40,10 +40,10 @@ Ao iniciar o servidor por meio do comando:<br>
 `main.py`<br>
 
 Podemos acessar a rota para testes utilizando o Postman, como indicado na imagem abaixo:<br>
-![Acesso de Rota via Postman](./media/route_postman.png)
+![Acesso de Rota via Postman](./media/route_postman.png)<br>
 
-Ao acessar a rota, indicamos que o body será composto de um form-data, que tem como key `image` e o value precisa estar no formato de arquivo. 
-![Formato do Arquivo](./media/format_key.png)
+Ao acessar a rota, indicamos que o body será composto de um form-data, que tem como key `image` e o value precisa estar no formato de arquivo. <br>
+![Formato do Arquivo](./media/format_key.png)<br>
 
 Em seguida para o `value`, ja pode ser realizado o upload de uma imagem que retornará a detecção dos elementos. Como indicado na sessão de Demonstração. 
 
