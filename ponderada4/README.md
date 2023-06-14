@@ -23,7 +23,7 @@ O Supabase é uma plataforma de desenvolvimento de aplicativos de código aberto
 ### Criação de Dataset 
 Para desenvolver a aplicação de aprendizado de máquina para o projeto eu criei um projeto individual no Roboflow para entender como estruturar um dataset. Usando como referência um dataset pre-pronto de imagens de gatos separadas por treino, teste e validação. Fiz o upload desse dataset no Roboflow para utilizar meu projeto e meu dataset como referência para a entrega. 
 
-[Link para o Projeto](https://universe.roboflow.com/gabrielainteli/cats_find)
+[Link para o Projeto](https://universe.roboflow.com/gabrielainteli/fire_detection-ihaqe/dataset/2)
 
 ## Requisitos
 ✓ Ultralytics<br>
