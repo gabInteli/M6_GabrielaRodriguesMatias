@@ -10,11 +10,15 @@ YOLO, que significa "You Only Look Once", é uma popular arquitetura de modelo p
 O Roboflow é uma plataforma online que permite que desenvolvedores criem seus próprios aplicativos de visão computacional. Ele fornece várias ferramentas necessárias para converter imagens em um modelo de visão computacional com treinamento personalizado para uso em aplicativos.
 
 ## OpenCV
-
+OpenCV (Open Source Computer Vision Library) é uma biblioteca de código aberto amplamente utilizada para processamento de imagens e visão computacional. Ela fornece um conjunto abrangente de funções e algoritmos otimizados para executar tarefas relacionadas à análise, manipulação e compreensão de imagens e vídeos.
 
 ## FastAPI
+O FastAPI é um framework moderno e de alto desempenho para desenvolvimento de APIs em Python. Ele foi projetado para ser fácil de usar, rápido e altamente produtivo.
+
+O FastAPI utiliza o tipo de anotação de tipos do Python 3.7+ para definir os tipos de dados esperados nas rotas da API, permitindo a validação automática dos dados de entrada e fornecendo mensagens de erro descritivas em caso de problemas. 
 
 ## SupaBase
+O Supabase é uma plataforma de desenvolvimento de aplicativos de código aberto que combina um banco de dados PostgreSQL com uma API RESTful pronta para uso. Ele oferece recursos avançados, como autenticação, armazenamento de arquivos, geração de APIs, websockets em tempo real e muito mais.
 
 ### Criação de Dataset 
 Para desenvolver a aplicação de aprendizado de máquina para o projeto eu criei um projeto individual no Roboflow para entender como estruturar um dataset. Usando como referência um dataset pre-pronto de imagens de gatos separadas por treino, teste e validação. Fiz o upload desse dataset no Roboflow para utilizar meu projeto e meu dataset como referência para a entrega. 
@@ -28,6 +32,8 @@ Para desenvolver a aplicação de aprendizado de máquina para o projeto eu crie
 ✓ Uvicorn<br> 
 ✓ Postman - Teste de Funcionamento<br> 
 ✓ OpenCV<br> 
+✓ YoloV8<br>
+✓ SupaBase<br>  
 
 ## Passo a Passo 
 1. Criação de Conta no Roboflow 
@@ -36,25 +42,65 @@ Para desenvolver a aplicação de aprendizado de máquina para o projeto eu crie
 4. Treinamento e Teste do Modelo (Colab - https://colab.research.google.com/drive/1ljGORzEGB4epcRAinL5Jopd5CSKNO7zX?usp=sharing)
 5. Criação de Publisher - Realiza o envio de todos os frames de um vídeo para o nosso subscriber. 
 6. Criação de Subscriber - Responsável por receber cada um dos arquivos de imagens e converter esses arquivos no formato desejato, além da conexão com a rota de backend para o armazenamento local de todas as imagens geradas. 
-7. Envio das Imagens para o SupaBase - Via Rota com FastAPI 
-8. Validação das Imagens via URL do Supabase 
+7. Criação de Um Bucket - Armazenamento de Imagens online com Supabase 
+8. Envio das Imagens para o SupaBase - Via Rota com FastAPI 
+9. Validação das Imagens via URL do Supabase 
 
 
-## API - Envio de Imagens 
-Por meio das bibliotecas: Uvicorn e Fastapi foi criado um servidor em python responsável pelo recebimento das imagens a serem utilizadas com base no modelo para a identificação de gatos. 
+## APIs - Servidor com FastAPI 
 
-A API é estruturada com uma rota responsável pelo método POST da imagem e essa imagemutiliza como referência a estrutura desenvolvida pelo YoloV8 para entender a existência ou não dos elementos na imagem. 
+### Rota `/list`
 
-Ao iniciar o servidor por meio do comando:<br>
-`main.py`<br>
+Lista todas as imagens do Bucket.
 
-Podemos acessar a rota para testes utilizando o Postman, como indicado na imagem abaixo:<br>
-![Acesso de Rota via Postman](./media/route_postman.png)<br>
+#### Método
+`GET`
 
-Ao acessar a rota, indicamos que o body será composto de um form-data, que tem como key `image` e o value precisa estar no formato de arquivo. <br>
-![Formato do Arquivo](./media/format_key.png)<br>
+#### URL
+`/list`
 
-Em seguida para o `value`, ja pode ser realizado o upload de uma imagem que retornará a detecção dos elementos. Como indicado na sessão de Demonstração. 
+#### Resposta de Sucesso
+- Código: `200 OK`
+- Conteúdo: Lista de imagens presentes no Bucket
+
+---
+
+### Rota `/upload`
+
+Faz o upload de uma imagem para o servidor.
+
+#### Método
+`POST`
+
+#### URL
+`/upload`
+
+#### Parâmetros da Requisição
+- `content`: Arquivo de imagem a ser enviado (tipo: arquivo)
+
+#### Resposta de Sucesso
+- Código: `200 OK`
+- Conteúdo:
+  - `status`: "ok"
+
+---
+
+### Rota `/images`
+
+Faz o upload de todas as imagens presentes na pasta `../../../OpenCV/recebidos` para o servidor.
+
+#### Método
+`POST`
+
+#### URL
+`/images`
+
+#### Resposta de Sucesso
+- Código: `200 OK`
+- Conteúdo:
+  - `message`: "Image uploaded successfully"
+
+---
 
 ## Demonstração 
 ### Modelo - Treino e Teste 
@@ -63,4 +109,4 @@ Em seguida para o `value`, ja pode ser realizado o upload de uma imagem que reto
 ### Funcionamento 
 ![Imagem da Detecção de Fogo](./media/detection_image.png)<br>
 
-[Vídeo de Demonstração do Funcionamento](https://youtu.be/O3qhWABqWgE)<br>
+[Vídeo de Demonstração do Funcionamento](https://youtu.be/OF1IXWf8eNA)<br>
