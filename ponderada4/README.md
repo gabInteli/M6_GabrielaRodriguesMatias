@@ -39,7 +39,7 @@ Para desenvolver a aplicação de aprendizado de máquina para o projeto eu crie
 1. Criação de Conta no Roboflow 
 2. Criação de Dataset no Roboflow 
 3. Instalação de Pacotes e Bibliotecas Necessários 
-4. Treinamento e Teste do Modelo (Colab - https://colab.research.google.com/drive/1UXihDcHmfwYbmCkw2SY4tjujvVEDf63V?usp=sharing)
+4. Treinamento e Teste do Modelo (Colab - https://colab.research.google.com/drive/1T-39zHE5GTS8R1S-QgunPcdgyicq0w2Z?usp=sharing)
 5. Criação de Publisher - Realiza o envio de todos os frames de um vídeo para o nosso subscriber. 
 6. Criação de Subscriber - Responsável por receber cada um dos arquivos de imagens e converter esses arquivos no formato desejato, além da conexão com a rota de backend para o armazenamento local de todas as imagens geradas. 
 7. Criação de Um Bucket - Armazenamento de Imagens online com Supabase 
