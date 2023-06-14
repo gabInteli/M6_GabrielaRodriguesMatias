@@ -110,3 +110,7 @@ Faz o upload de todas as imagens presentes na pasta `../../../OpenCV/recebidos` 
 ![Imagem da Detecção de Fogo](./media/detection_image.png)<br>
 
 [Vídeo de Demonstração do Funcionamento](https://youtu.be/OF1IXWf8eNA)<br>
+
+#### Acessar URL de Imagem Armazenada Via SupaBase 
+![QR Code - Armazenamento de Imagem](./media/qr_code.png)<br>
+
